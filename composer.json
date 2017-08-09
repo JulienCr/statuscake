@@ -1,8 +1,8 @@
 {
-    "name":             "happydemon/statuscake",
+    "name":             "deltasystems/statuscake",
     "description":      "Interface for StatusCake API",
     "keywords":         ["monitoring", "api"],
-    "homepage":         "https://github.com/happyDemon/statuscake",
+    "homepage":         "https://github.com/DeltaSystems/statuscake",
     "license":          "MIT",
     "authors": [
       {
