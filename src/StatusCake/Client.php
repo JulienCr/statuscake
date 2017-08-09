@@ -22,12 +22,12 @@ class Client extends Call
     }
 
     /**
-     * @param mixed $response
-     * @return array
-     * @throws Exception
+     * Returns a list overview of all tests
      */
-    protected function buildTestsFromResponse($response)
+    public function getTests()
     {
+        $response = $this->callApi('Tests');
+
         // Check for success
         if (!is_array($response)) {
 
@@ -49,39 +49,6 @@ class Client extends Call
         }
 
         return $testList;
-    }
-
-    /**
-     * Returns a list overview of all tests
-     */
-    public function getTests()
-    {
-        $response = $this->callApi('Tests');
-        $this->buildTestsFromResponse($response);
-    }
-
-    /**
-     * @param array|null $tags
-     * @param bool $matchAny
-     * @param string $status [Up/Down]
-     * @return Test[]
-     * @throws Exception
-     */
-    public function findTests(array $tags = null, $matchAny = true, $status = null)
-    {
-        $query = array(
-            'matchany' => $matchAny ? 'true' : 'false',
-        );
-        if ($tags) {
-            $query['tags'] = join(',', $tags);
-        }
-
-        if ($status) {
-            $query['status'] = $status;
-        }
-
-        $response = $this->callApi('Tests?' . http_build_query($query));
-        return $this->buildTestsFromResponse($response);
     }
     
     /**

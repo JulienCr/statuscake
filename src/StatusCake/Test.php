@@ -2,8 +2,6 @@
 
 namespace StatusCake;
 
-use Exception;
-
 class Test extends Call
 {
     const STATUS_UNKNOWN = null;
@@ -160,7 +158,7 @@ class Test extends Call
             return $response;
         }
         
-        throw new Exception('StatusCake API Error - Test periods retrieval failed.');
+        throw new \Exception('StatusCake API Error - Test periods retrieval failed.');
     }
     
     /**
@@ -171,7 +169,7 @@ class Test extends Call
      *
      * @return mixed
      */
-    public function getPerformance($parameters)
+    public function getPerformance($parameters = array())
     {
         $parameters['TestID'] = $this->testID;
     
@@ -182,8 +180,8 @@ class Test extends Call
         
             return $response;
         }
-    
-        throw new Exception('StatusCake API Error - Test performance retrieval failed.');
+
+        throw new \Exception('StatusCake API Error - Test performance retrieval failed.');
     }
     
     /**
@@ -200,28 +198,6 @@ class Test extends Call
             return $response;
         }
     
-        throw new Exception('StatusCake API Error - Test Alerts retrieval failed.');
-    }
-
-    /**
-     * Fetch test detailed test data
-     *
-     * @return $this
-     * @throws Exception
-     */
-    public function getDetailedData()
-    {
-        $response = $this->callApi('Tests/Details?TestID='.$this->testID, 'GET');
-
-        if (!is_object($response))
-        {
-            throw new Exception('StatusCake API Error - Test Alerts retrieval failed.');
-        }
-
-        foreach ($response as $key => $testDataValue) {
-            $this->{lcfirst($key)} = $testDataValue;
-        }
-
-        return $this;
+        throw new \Exception('StatusCake API Error - Test Alerts retrieval failed.');
     }
 }

@@ -14,8 +14,9 @@ class Call
     /**
      * @var string
      */
-    protected $url = "https://www.statuscake.com/API";
-
+    private $url = "https://app.statuscake.com/API";
+    
+    
     protected $credentials;
     
     public function registerCredentials(Credentials $credentials)
@@ -50,7 +51,7 @@ class Call
         ]);
         
         $response = curl_exec($ch);
-        
+
         if (curl_errno($ch) !== 0)
         {
             throw new Exception(curl_error($ch));
