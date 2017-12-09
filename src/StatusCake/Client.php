@@ -7,13 +7,21 @@ use Exception;
 class Client extends Call
 {
     /**
+     * @var bool check API response for success status
+     */
+    public $checkForSuccess;
+
+    /**
      * Set the API credentials
      *
      * @param string $username
      * @param string $token
+     * @param bool $checkForSuccess
      */
-    public function __construct($username, $token)
+    public function __construct($username, $token, $checkForSuccess = true)
     {
+        $this->checkForSuccess = $checkForSuccess;
+
         $credentials = new Credentials();
         $credentials->user = $username;
         $credentials->token = $token;
@@ -76,7 +84,7 @@ class Client extends Call
         $response = $this->callApi('Tests/Update', 'PUT', $data);
 
         // Check for success
-        if (is_object($response) && ($response->Success == true)) {
+        if (is_object($response) && (!$this->checkForSuccess || $response->Success == true)) {
             
             if(property_exists($response, 'InsertID'))
             {
@@ -112,7 +120,7 @@ class Client extends Call
         );
 
         // Check for success
-        if (is_object($response) && ($response->Success == true)) {
+        if (is_object($response) && (!$this->checkForSuccess || $response->Success == true)) {
 
             return $response;
         }
@@ -218,7 +226,7 @@ class Client extends Call
         $response = $this->callApi('ContactGroups/Update', 'PUT', $data);
         
         // Check for success
-        if (is_object($response) && ($response->Success == true)) {
+        if (is_object($response) && (!$this->checkForSuccess || $response->Success == true)) {
             
             return $response;
         }
@@ -246,7 +254,7 @@ class Client extends Call
         );
         
         // Check for success
-        if (is_object($response) && ($response->Success == true)) {
+        if (is_object($response) && (!$this->checkForSuccess || $response->Success == true)) {
             
             return $response;
         }
