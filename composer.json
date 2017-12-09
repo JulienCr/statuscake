@@ -1,8 +1,8 @@
 {
-    "name":             "deltasystems/statuscake",
+    "name":             "onlime/statuscake",
     "description":      "Interface for StatusCake API",
     "keywords":         ["monitoring", "api"],
-    "homepage":         "https://github.com/DeltaSystems/statuscake",
+    "homepage":         "https://github.com/onlime/statuscake",
     "license":          "MIT",
     "authors": [
       {
