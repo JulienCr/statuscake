@@ -9,7 +9,7 @@ This project wraps most endpoints StatusCake has to offer.
 Via Composer
 
 ``` bash
-composer require happydemon/statuscake
+composer require JulienCr/statuscake
 ```
 
 ## Usage
