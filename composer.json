@@ -1,5 +1,5 @@
 {
-    "name":             "onlime/statuscake",
+    "name":             "JulienCr/statuscake",
     "description":      "Interface for StatusCake API",
     "keywords":         ["monitoring", "api"],
     "homepage":         "https://github.com/onlime/statuscake",
