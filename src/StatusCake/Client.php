@@ -93,6 +93,9 @@ class Client extends Call
             }
             
             return $response;
+        } elseif ($response->Message == 'No data has been updated (is any data different?)') {
+
+            return $response;
         }
 
         throw new Exception('StatusCake API Error - Test update failed.');
